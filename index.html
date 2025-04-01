@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damas da Peppa Pig</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    <h1>Damas da Peppa Pig</h1>
+    
+    <div class="game-container">
+        <div class="game-info">
+            <div class="player-turn">
+                <div class="player-icon player1-icon"></div>
+                <div class="score">Peppa: <span id="score1">0</span></div>
+            </div>
+            <div class="player-turn">
+                <div class="player-icon player2-icon"></div>
+                <div class="score">George: <span id="score2">0</span></div>
+            </div>
+        </div>
+        
+        <div class="board" id="board"></div>
+        
+        <div class="controls">
+            <button id="restart-btn">Recomeçar</button>
+            <button id="rules-btn">Regras</button>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>Como jogar:</h3>
+        <ol>
+            <li>Peppa (rosinha) começa o jogo</li>
+            <li>Clique em uma peça para selecionar e depois em uma casa vazia para mover</li>
+            <li>Peças comuns movem-se apenas para frente na diagonal</li>
+            <li>Para capturar, pule sobre a peça do oponente para uma casa vazia</li>
+            <li>Quando uma peça chega ao outro lado, vira uma Dama (com coroa) e pode mover para trás</li>
+            <li>O jogo termina quando um jogador não tem mais peças ou não pode mover</li>
+        </ol>
+    </div>
+    
+    <div class="modal" id="winner-modal">
+        <div class="modal-content">
+            <h2 id="winner-text">Peppa Venceu!</h2>
+            <div class="winner-icon" id="winner-icon"></div>
+            <button id="play-again-btn">Jogar Novamente</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="rules-modal">
+        <div class="modal-content">
+            <h2>Regras do Jogo de Damas</h2>
+            <ol style="text-align: left; margin: 20px 0;">
+                <li>O tabuleiro tem 8x8 casas com 12 peças para cada jogador</li>
+                <li>Peças comuns movem-se apenas para frente na diagonal</li>
+                <li>Capturas são feitas pulando sobre a peça adversária</li>
+                <li>Se uma captura for possível, ela deve ser feita</li>
+                <li>Quando uma peça alcança a última linha, torna-se uma Dama</li>
+                <li>Damas podem mover e capturar para frente e para trás</li>
+                <li>O jogo termina quando um jogador perde todas as peças ou não pode mover</li>
+            </ol>
+            <button id="close-rules-btn">Entendi!</button>
+        </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,273 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+body {
+    background-color: #FFD6E7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    color: #FF5E9C;
+    margin: 20px 0;
+    text-shadow: 2px 2px 0 #FFF;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.game-container {
+    background-color: #FFEBF1;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #A2D9FF;
+    border: 10px solid #5CB3FF;
+    border-radius: 10px;
+}
+
+.cell {
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.light {
+    background-color: #FFEBF1;
+}
+
+.dark {
+    background-color: #FFA8D0;
+}
+
+.piece {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.piece:hover {
+    transform: scale(1.1);
+}
+
+.player1 {
+    background-image: url('https://i.imgur.com/JR4Qx1P.png'); /* Peppa */
+    border: 3px solid #FF5E9C;
+}
+
+.player2 {
+    background-image: url('https://i.imgur.com/8zLb3Xk.png'); /* George */
+    border: 3px solid #5CB3FF;
+}
+
+.king {
+    box-shadow: 0 0 15px gold;
+}
+
+.king.player1::after {
+    content: '👑';
+    position: absolute;
+    bottom: -15px;
+    font-size: 20px;
+}
+
+.king.player2::after {
+    content: '👑';
+    position: absolute;
+    bottom: -15px;
+    font-size: 20px;
+}
+
+.possible-move {
+    background-color: rgba(146, 255, 150, 0.5);
+    border-radius: 50%;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    z-index: 1;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-turn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.player1-icon {
+    background-image: url('https://i.imgur.com/JR4Qx1P.png');
+    border: 3px solid #FF5E9C;
+}
+
+.player2-icon {
+    background-image: url('https://i.imgur.com/8zLb3Xk.png');
+    border: 3px solid #5CB3FF;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FF5E9C;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #FF5E9C;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #FF3D7F;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #FFF;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: popIn 0.5s;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal h2 {
+    color: #FF5E9C;
+    margin-bottom: 20px;
+}
+
+.winner-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.winner-peppa {
+    background-image: url('https://i.imgur.com/JR4Qx1P.png');
+    border: 5px solid #FF5E9C;
+}
+
+.winner-george {
+    background-image: url('https://i.imgur.com/8zLb3Xk.png');
+    border: 5px solid #5CB3FF;
+}
+
+.instructions {
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.instructions h3 {
+    color: #FF5E9C;
+    margin-bottom: 10px;
+}
+
+.instructions ol {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .piece {
+        width: 70%;
+        height: 70%;
+    }
+    
+    .player-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
